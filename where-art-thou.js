@@ -3,21 +3,32 @@
 
 function where(collection, source) {
   var arr = [];
+  var hasProperties = false;
   var sourceKeys = Object.keys(source);
-  // var
 
-  collection.forEach(function (obj) {
+  collection.forEach(function (object) {
 
-    if (obj.hasOwnProperty(sourceKeys)) {
-      console.log("true");
-      arr.push(obj);
+    for(var prop in source) {
+      console.log(prop);
+      if (!object.hasOwnProperty(prop)) {
+        console.log("no!");
+        return;
+      } else if (object[prop] == source[prop]) {
+        console.log("Yes!");
+        hasProperties = true;
+      } else {
+        hasProperties = false;
+      }
     }
+    if (hasProperties) {
+      arr.push(object);
 
+    }
   })
 
   // What's in a name?
   // return arr;
-  console.log(arr);
+  return arr;
 }
 
-where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet", nickname: "pepe" });
+where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet"}], { last: "Capulet", nickname: "Pepe"});
