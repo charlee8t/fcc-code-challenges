@@ -1,22 +1,22 @@
-console.log("hello!");
-
 function translatePigLatin(str) {
-  var ay = "ay",
-      vowels = ["a", "e", "i", "o", "u"],
-      str = str.toLowerCase(),
-      splitStr = str.split("");
 
-  for(var i = 0; i < vowels.length; i++){
-    if(splitStr.indexOf(vowels[i]) !== 0){
-        console.log("Doesnt start with a vowel");
-    } else {
-      console.log("Starts with a vowel!");
-      return;
-    }
+  var ay = "ay";
+  var way = "way";
+  var str = str.toLowerCase();
+  var firstLetter = str[0];
+  var firstConsonant;
+
+
+  if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u") {
+    str = str + way;
+
+  } else {
+    str = str.split("");
+    firstConsonant = str.shift();
+
+    str = str.join("") +  firstConsonant + ay;
   }
-  return splitStr+ay;
+  return str;
 }
 
-var result =  translatePigLatin("Alfajor");
-console.log(result);
-// translatePigLatin("consonant");
+translatePigLatin("california");
