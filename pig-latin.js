@@ -1,22 +1,26 @@
+//FREECODECAMP PIG LATING
+
 function translatePigLatin(str) {
 
   var ay = "ay";
   var way = "way";
+  var vowels = ["a", "e", "i", "o", "u"];
   var str = str.toLowerCase();
   var firstLetter = str[0];
-  var firstConsonant;
-
 
   if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u") {
-    str = str + way;
+      return str + way;
 
   } else {
-    str = str.split("");
-    firstConsonant = str.shift();
-
-    str = str.join("") +  firstConsonant + ay;
+    for (var i = 0; i < str.length; i++) {
+      for (var j = 0; j < vowels.length; j++) {
+        if (str.charAt(i) === vowels[j]) {
+          str = str.substring(i) + str.substring(0, i);
+          return str + ay;
+        }
+      }
+    }
   }
-  return str;
 }
 
 translatePigLatin("california");
